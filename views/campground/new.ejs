@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New a campground</h1>
+            <div class="col-6 offset-3">
+                <form action="/campgrounds" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class = "form-control"type="text" id="title" name="campground_title" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="location">Location</label>
+                        <input class = "form-control"  type="text" id="location" name="campground_location"  >
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <!--<div class="mb-3">
+                        <label class="form-label" for="image">Image url</label>
+                        <input class = "form-control"  type="text" id="image" name="campground_image" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>-->
+                    <input type="file" name="image" id="" multiple>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class = "form-control"  type="text" id="description" name="campground_description" required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price">Campground Price</label>
+                        <div class="input-group mb-3"> 
+                            <span class="input-group-text">$</span>
+                            <input name="campground_price" id="price" placeholder="0.00" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                            <span class="input-group-text">.00</span>
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success" type="submit">Add campground</button>
+                    </div>
+              
+                </form>
+            </div>
+    </div>
+
+    <script src="/javascript/validateforms.js"></script>
+
