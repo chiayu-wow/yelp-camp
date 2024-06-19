@@ -19,13 +19,14 @@ const User  = require('./models/user')
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 const MongoStore = require('connect-mongo');
-const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp'
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp'
+const secret = process.env.secret || 'thisismysecret!'
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisismysecret!'
+        secret
     }
 });
 
@@ -39,7 +40,7 @@ app.use(express.static(path.join(__dirname,'public')))
 app.use(session({
     store,
     name : 'session__',
-    secret : "thisismysecret",
+    secret,
     resave : false,
     saveUninitialized : false,
     cookie : {
