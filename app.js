@@ -20,7 +20,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp'
-const secret = process.env.secret || 'thisismysecret!'
+const secret = process.env.secret || 'thisismysecret'
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -101,7 +101,7 @@ app.use((err,req,res,next)=>{
     }
     res.status(status).render('error',{err})
 })
-
-app.listen('3000', ()=>{
-    console.log("listen on port 3000")
+const port = process.env.PORT || 3000
+app.listen(port, ()=>{
+    console.log(`listen on port ${port}`)
 })
